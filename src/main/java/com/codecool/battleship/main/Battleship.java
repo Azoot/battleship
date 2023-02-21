@@ -18,7 +18,7 @@ public class Battleship {
 			this.display.displayMenu();
 //			String playerInput = input.getPlayerInput();
 //			MenuItem menuItem = MenuItem.valueOfNumber(Integer.parseInt(playerInput));
-			MenuItem menuItem = MenuItem.START;
+			MenuItem menuItem = MenuItem.START; // I case testing whole app comment this line(21) and uncomment line 19 and 20
 			if (menuItem == null){
 				System.out.println("Input number from 1 -2 ");
 				continue;
