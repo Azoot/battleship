@@ -8,7 +8,15 @@ public enum MenuItem {
 	EXIT(2,"Exit Game.");
 
 
+
 	private static final Map<Integer, MenuItem> NUMBER = new HashMap<>();
+
+	/**
+	 * this loop adds NUMBER value that is the number itself as a value that can be called out later on
+	 * we can call that an "Enum" 'LABEL off ENUM item'
+	 * START have two values that have LABEL Number and Value in that order
+	 * START.number gives ('int' --> 1) and START.value gives ('String' -> "Start Game.")
+	 */
 	static {
 		for (MenuItem m : values()) {
 			NUMBER.put(m.number, m);
@@ -24,11 +32,20 @@ public enum MenuItem {
 		this.number = number;
 	}
 
+	/**
+	 *
+	 * @return a 'String' value of ENUM item
+	 */
 	@Override
 	public String toString() {
 		return this.value;
 	}
 
+	/**
+	 * used to call
+	 * @param number of ENUM item
+	 * @return ENUM's item with LABEL "NUMBER"
+	 */
 	public static MenuItem valueOfNumber(int number){
 		System.out.println(number);
 		return NUMBER.get(number);

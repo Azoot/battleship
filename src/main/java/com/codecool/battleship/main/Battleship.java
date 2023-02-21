@@ -7,6 +7,11 @@ public class Battleship {
 	private Display display = new Display();
 	Input input = new Input();
 	Game game = new Game();
+
+	/**
+	 * Main game starting Function executed by Main.java
+	 * Shows first menu that gives player options to choose by typing numbers
+	 */
 	public void battleship() {
 		while(true){
 			this.display.clearScreen();

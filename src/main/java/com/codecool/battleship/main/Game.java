@@ -4,6 +4,9 @@ public class Game {
 	Board board = new Board();
 	Player player = new Player();
 
+	/**
+	 * Function Starting Game
+	 */
 	public void start(){
 		char[][] gameBoard = board.createGameBoard(10,'~');
 		Display.printBoard(gameBoard);
