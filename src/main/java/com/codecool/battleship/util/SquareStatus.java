@@ -1,7 +1,7 @@
 package com.codecool.battleship.util;
 
 public enum SquareStatus {
-	EMPTY("\u1F600"), // test unicode return
+	EMPTY("~"),
 	SHIP("s"),
 	HIT("h"),
 	MISSED("m");

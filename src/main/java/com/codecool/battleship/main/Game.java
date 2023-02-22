@@ -5,10 +5,10 @@ public class Game {
 	Player player = new Player();
 
 	/**
-	 * Function Starting Game
+	 * Function Starting Game Rounds and logic
 	 */
 	public void start(){
-		char[][] gameBoard = board.createGameBoard(10,'~');
+		Square[][] gameBoard = board.createGameBoard(10);
 		Display.printBoard(gameBoard);
 		while (true){
 

@@ -16,9 +16,9 @@ public class Battleship {
 		while(true){
 			this.display.clearScreen();
 			this.display.displayMenu();
-//			String playerInput = input.getPlayerInput();
+//			String playerInput = input.getMenuInput();
 //			MenuItem menuItem = MenuItem.valueOfNumber(Integer.parseInt(playerInput));
-			MenuItem menuItem = MenuItem.START; // I case testing whole app comment this line(21) and uncomment line 19 and 20
+			MenuItem menuItem = MenuItem.START; // In case testing whole app comment this line(21) and uncomment line (19-20)
 			if (menuItem == null){
 				System.out.println("Input number from 1 -2 ");
 				continue;
@@ -27,6 +27,9 @@ public class Battleship {
 				case START:
 					System.out.println("Game started");
 					game.start();
+					break;
+				case HIGH_SCORE:
+					System.out.println("There is no high score dummy");
 					break;
 				case EXIT:
 					System.out.println("Exiting game");

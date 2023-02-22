@@ -7,7 +7,7 @@ public class Display {
 	/**
 	 *Creates list type <MenuItem> called menuItems then states the content of the list itself
 	 */
-	private List<MenuItem> menuItems = List.of(MenuItem.START, MenuItem.EXIT);
+	private List<MenuItem> menuItems = List.of(MenuItem.START,MenuItem.HIGH_SCORE, MenuItem.EXIT);
 
 	public void displayMenu(){
 		System.out.println("Menu:");
@@ -30,7 +30,7 @@ public class Display {
 	 * Print board
 	 * @param board <-- printed row by row
 	 */
-	public static void printBoard(char[][] board){
+	public static void printBoard(Square[][] board){
 		for (int row = 0; row < board.length; row++ ){
 			for (int col = 0; col < board.length; col++){
 				System.out.print(board[row][col]+ " ");

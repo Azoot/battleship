@@ -11,7 +11,7 @@ public class Input {
 	 * everything to refactor according to app growth
 	 * @return
 	 */
-	public String getPlayerInput(){
+	public String getMenuInput(){
 		String playerInput = scanner.nextLine();
 
 		return playerInput;

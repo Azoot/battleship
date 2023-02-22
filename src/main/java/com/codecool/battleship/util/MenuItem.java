@@ -5,7 +5,8 @@ import java.util.Map;
 
 public enum MenuItem {
 	START(1,"Start Game."),
-	EXIT(2,"Exit Game.");
+	HIGH_SCORE(2,"High Scores."),
+	EXIT(3,"Exit Game.");
 
 
 
@@ -47,7 +48,6 @@ public enum MenuItem {
 	 * @return ENUM's item with LABEL "NUMBER"
 	 */
 	public static MenuItem valueOfNumber(int number){
-		System.out.println(number);
 		return NUMBER.get(number);
 	}
 }

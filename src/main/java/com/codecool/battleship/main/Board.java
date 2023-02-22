@@ -1,21 +1,27 @@
 package com.codecool.battleship.main;
-import java.util.Arrays;
+
+import com.codecool.battleship.util.BoardFactory;
+import com.codecool.battleship.util.SquareStatus;
 
 public class Board {
-	Square square = new Square(); // TODO Square [][] ??
-	char water = '~';
+	Square[][] ocean = new Square[0][]; // TODO Square [][] ??
 
 	/**
 	 * creates game Board with only Water.
 	 * @param gameBoardLength
-	 * @param water
 	 * @return
 	 */
-	public char[][] createGameBoard(int gameBoardLength, char water){
-	char[][]gameBoard = new char[gameBoardLength][gameBoardLength];
-	for (char[] row: gameBoard) {
-		Arrays.fill(row, water);
+	public Square[][] createGameBoard(int gameBoardLength){
+	Square[][]gameBoard = new Square[gameBoardLength][gameBoardLength];
+	for (int i = 0; i < gameBoardLength; i++) {
+		for (int j = 0; j < gameBoardLength; j++) {
+			gameBoard[i][j] = new Square();
+		}
+
 	}
+	Player player = new Player();
+		gameBoard = BoardFactory.randomPlacement(gameBoardLength, gameBoard, SquareStatus.SHIP);
+
 		return gameBoard;
 	}
 }
