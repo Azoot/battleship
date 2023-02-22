@@ -27,8 +27,8 @@ public enum ShipType {
 		return this.shipSize;
 	}
 
-	public int getShipQuantity() {
-		return shipQuantity;
+	public ShipType getShipQuantity(int shipQuantity) {
+		return ShipType.QUANTITY.get(shipQuantity);
 	}
 }
 
