@@ -1,23 +1,31 @@
 package com.codecool.battleship.main;
 
 public class Game {
-	Board board = new Board();
+	Board board = new Board(10);
 	Player player = new Player();
 
 	/**
 	 * Function Starting Game Rounds and logic
 	 */
-	public void start(){
-		Square[][] gameBoard = board.createGameBoard(10);
-		Display.printBoard(gameBoard);
-		while (true){
+	public void start() {
+		board.createGameBoard();
+		for (Ship ship : player.getShips()) {
+			board.placeShipOnBoard(ship);
+		}
+		draw();
+		Display.printBoard(board.getOcean());
+		while (true) {
 
 		}
 
+
 	}
 
-
-
+	private void draw() {
+		for (Ship ship : player.getShips()) {
+			board.drawShipOnBoard(ship);
+		}
+	}
 
 //		public static void main(String[] args) {
 //			Ship s2 = new Ship();

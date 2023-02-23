@@ -12,14 +12,26 @@ public class Ship {
 
 	private List<Square> shipLocations = new ArrayList<>();
 
-		public ShipType shipSize;
+	public ShipType shipType;
 
-		public Ship() {
-
-
-		}
-
-		public void setStatus(ShipType status){
-			this.shipSize = status;
-		}
+	public List<Square> getShipLocations() {
+		return shipLocations;
 	}
+
+	public Ship() {
+
+	}
+
+	public void setStatus(ShipType status) {
+		this.shipType = status;
+	}
+
+	@Override
+	public String toString() {
+		return this.shipType.toString();
+	}
+
+	public void setSquares(List<Square> squares) {
+		shipLocations = squares;
+	}
+}

@@ -11,15 +11,31 @@ public class Square {
 	private int posX;
 	private int posY;
 
-	Square() {
+	public Square(int posY, int posX) {
 		this.posX = posX;
 		this.posY = posY;
 
 	}
 
-	public void setStatus(SquareStatus status)
-	{
+	public void setStatus(SquareStatus status) {
 		this.status = status;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public int getPosY() {
+		return posY;
 	}
 
 	@Override

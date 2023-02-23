@@ -9,9 +9,10 @@ public class Input {
 	/**
 	 * This whole file content is just temporary
 	 * everything to refactor according to app growth
+	 *
 	 * @return
 	 */
-	public String getMenuInput(){
+	public String getMenuInput() {
 		String playerInput = scanner.nextLine();
 
 		return playerInput;

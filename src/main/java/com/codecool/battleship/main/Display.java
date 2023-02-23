@@ -1,18 +1,19 @@
 package com.codecool.battleship.main;
 
 import com.codecool.battleship.util.MenuItem;
+
 import java.util.List;
 
 public class Display {
 	/**
-	 *Creates list type <MenuItem> called menuItems then states the content of the list itself
+	 * Creates list type <MenuItem> called menuItems then states the content of the list itself
 	 */
-	private List<MenuItem> menuItems = List.of(MenuItem.START,MenuItem.HIGH_SCORE, MenuItem.EXIT);
+	private List<MenuItem> menuItems = List.of(MenuItem.START, MenuItem.HIGH_SCORE, MenuItem.EXIT);
 
-	public void displayMenu(){
+	public void displayMenu() {
 		System.out.println("Menu:");
-		for (int i = 0; i < menuItems.size(); i++){
-			System.out.println(i+1 + ". " + menuItems.get(i));
+		for (int i = 0; i < menuItems.size(); i++) {
+			System.out.println(i + 1 + ". " + menuItems.get(i));
 		}
 
 	}
@@ -28,14 +29,15 @@ public class Display {
 
 	/**
 	 * Print board
+	 *
 	 * @param board <-- printed row by row
 	 */
-	public static void printBoard(Square[][] board){
-		for (int row = 0; row < board.length; row++ ){
-			for (int col = 0; col < board.length; col++){
-				System.out.print(board[row][col]+ " ");
+	public static void printBoard(Square[][] board) {
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board.length; col++) {
+				System.out.print(board[row][col] + " ");
 			}
-				System.out.println();
+			System.out.println();
 		}
 	}
 

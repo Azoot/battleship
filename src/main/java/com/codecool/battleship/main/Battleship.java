@@ -13,17 +13,17 @@ public class Battleship {
 	 * Shows first menu that gives player options to choose by typing numbers
 	 */
 	public void battleship() {
-		while(true){
+		while (true) {
 			this.display.clearScreen();
 			this.display.displayMenu();
 //			String playerInput = input.getMenuInput();
 //			MenuItem menuItem = MenuItem.valueOfNumber(Integer.parseInt(playerInput));
 			MenuItem menuItem = MenuItem.START; // In case testing whole app comment this line(21) and uncomment line (19-20)
-			if (menuItem == null){
+			if (menuItem == null) {
 				System.out.println("Input number from 1 -2 ");
 				continue;
 			}
-			switch (menuItem){
+			switch (menuItem) {
 				case START:
 					System.out.println("Game started");
 					game.start();
@@ -39,8 +39,8 @@ public class Battleship {
 
 			}
 
-			}
 		}
-
-
 	}
+
+
+}
