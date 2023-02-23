@@ -6,6 +6,7 @@ public class Board {
 	Square[][] ocean = new Square[0][]; // TODO Square [][] ??
 
 	private int boardSize;
+	private BoardFactory boardFactory = new BoardFactory();
 
 	public Board(int boardSize) {
 		this.boardSize = boardSize;
@@ -31,7 +32,7 @@ public class Board {
 	}
 
 	public void placeShipOnBoard(Ship ship) {
-		ship.setSquares(BoardFactory.randomPlacement(boardSize, ocean, ship.shipType.getSize()));
+		ship.setSquares(boardFactory.randomPlacement(boardSize, ocean, ship.shipType.getSize()));
 		drawShipOnBoard(ship);
 	}
 
