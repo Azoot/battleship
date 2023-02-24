@@ -39,7 +39,7 @@ public class Board {
 
 	public void drawShipOnBoard(Ship ship){
 		for (Square square : ship.getShipLocations()){
-			ocean[square.getPosY()][square.getPosX()] =  square;
+			ocean[square.getPosY()][square.getPosX()] = square;
 
 		}
 	}

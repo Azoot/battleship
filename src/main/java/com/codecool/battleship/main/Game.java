@@ -49,13 +49,27 @@ public class Game {
 		int col = cords[1];
 		System.out.println(row +" " + col );
 		if (playersMove) {
-			System.out.println(this.enemyBoard.getOcean()[row][col].status);
-			if (this.enemyBoard.getOcean()[row][col].status == SquareStatus.SHIP) {
-				this.enemyBoard.getOcean()[row][col].status = SquareStatus.HIT;
-				System.out.println(this.enemyBoard.getOcean()[row][col].status);
+		Square enemySquare = this.enemyBoard.getOcean()[row][col];
+			if (enemySquare.status == SquareStatus.SHIP) {
+				enemySquare.status = SquareStatus.HIT;
+			} else if (enemySquare.status == SquareStatus.EMPTY){
+				enemySquare.status = SquareStatus.MISSED;
+				playersMove = false;
+				System.out.println("Players 2 round");
 			}
+			enemy.checkIfShipIsDestroyed();
+		} else {
+			Square playerSquare = this.board.getOcean()[row][col];
+			if (playerSquare.status == SquareStatus.SHIP) {
+				playerSquare.status = SquareStatus.HIT;
+			} else if (playerSquare.status == SquareStatus.EMPTY){
+				playerSquare.status = SquareStatus.MISSED;
+				playersMove = true;
+				System.out.println("Player 1 round");
+			}
+			player.checkIfShipIsDestroyed();
 		}
-		draw();
+
 	}
 
 //	public gameIsRuning(){

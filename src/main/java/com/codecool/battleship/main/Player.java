@@ -1,6 +1,7 @@
 package com.codecool.battleship.main;
 
 import com.codecool.battleship.util.ShipType;
+import com.codecool.battleship.util.SquareStatus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +32,21 @@ public class Player {
 				Ship ship = new Ship();
 				ship.setStatus(ShipType.valueOf(shipName));
 				ships.add(ship);
+			}
+		}
+	}
+
+	public void checkIfShipIsDestroyed() {
+		for (Ship ship : ships) {
+			int count = 0;
+			for (Square square : ship.getShipLocations()) {
+				if (square.status == SquareStatus.HIT)
+					count++;
+			}
+			if (count == ship.getShipLocations().size()){
+				for (Square square : ship.getShipLocations()){
+					square.status = SquareStatus.DESTROYED;
+				}
 			}
 		}
 	}
