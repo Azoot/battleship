@@ -17,4 +17,14 @@ public class Input {
 
 		return playerInput;
 	}
+
+	public int[] getPlayerInput() throws Exception {
+		String playerInput = scanner.nextLine().toUpperCase();
+		if (playerInput.length() < 2)
+			throw new Exception("Input should contain letter and number eg. 'C1'");
+		int x = playerInput.charAt(0);
+		int y = Integer.parseInt(playerInput.substring(1));
+		return new int[]{x % 65, y-1};
+	}
+
 }

@@ -10,12 +10,57 @@ public class Display {
 	 */
 	private List<MenuItem> menuItems = List.of(MenuItem.START, MenuItem.HIGH_SCORE, MenuItem.EXIT);
 
+	/**
+	 * Print board
+	 *
+	 * @param board <-- printed row by row
+	 */
+	public void printBoard(Square[][] board) {
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board.length; col++) {
+				System.out.print(board[row][col] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	public void printBoard(Square[][] board, Square[][] enemyBoard) {
+		printColumnNumbers(board.length);
+		System.out.print(" ");
+		printColumnNumbers(enemyBoard.length);
+		System.out.println();
+		for (int row = 0; row < board.length; row++) {
+
+			System.out.print(this.printRowLetters(row) + " ");
+			for (int col = 0; col < board.length; col++) {
+				System.out.print(board[row][col] + " ");
+			}
+			System.out.print("\t" + (this.printRowLetters(row)) + " ");
+
+			for (int col = 0; col < board.length; col++) {
+				System.out.print(enemyBoard[row][col] + " ");
+			}
+			System.out.println();
+		}
+	}
+
 	public void displayMenu() {
 		System.out.println("Menu:");
 		for (int i = 0; i < menuItems.size(); i++) {
 			System.out.println(i + 1 + ". " + menuItems.get(i));
 		}
 
+	}
+
+	private char printRowLetters(int asciiVal) {
+		return (char) (65 + asciiVal);
+	}
+
+	private void printColumnNumbers(int boardLength) {
+		System.out.print(" ");
+		for (int i = 0; i < boardLength; i++) {
+			System.out.print(" " + (i + 1));
+		}
 	}
 
 	/**
@@ -25,20 +70,6 @@ public class Display {
 	public void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
-	}
-
-	/**
-	 * Print board
-	 *
-	 * @param board <-- printed row by row
-	 */
-	public static void printBoard(Square[][] board) {
-		for (int row = 0; row < board.length; row++) {
-			for (int col = 0; col < board.length; col++) {
-				System.out.print(board[row][col] + " ");
-			}
-			System.out.println();
-		}
 	}
 
 
