@@ -11,9 +11,10 @@ public class Square {
 	private int posX;
 	private int posY;
 
-	public Square(int posY, int posX) {
+	public Square(int posY, int posX, SquareStatus status) {
 		this.posX = posX;
 		this.posY = posY;
+		this.status = status;
 
 	}
 

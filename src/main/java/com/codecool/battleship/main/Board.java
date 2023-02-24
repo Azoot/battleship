@@ -1,6 +1,7 @@
 package com.codecool.battleship.main;
 
 import com.codecool.battleship.util.BoardFactory;
+import com.codecool.battleship.util.SquareStatus;
 
 public class Board {
 	Square[][] ocean = new Square[0][]; // TODO Square [][] ??
@@ -25,7 +26,7 @@ public class Board {
 		Square[][] gameBoard = new Square[boardSize][boardSize];
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
-				gameBoard[i][j] = new Square(j, i);
+				gameBoard[i][j] = new Square(j, i, SquareStatus.EMPTY);
 			}
 		}
 		ocean = gameBoard;
