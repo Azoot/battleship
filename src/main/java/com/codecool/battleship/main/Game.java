@@ -10,6 +10,7 @@ public class Game {
 
 	Boolean playersMove = true;
 
+
 	public Board getBoard() {
 		return board;
 	}
@@ -44,35 +45,50 @@ public class Game {
 		}
 	}
 
-	public void playerRound(int[] cords) {
+	public String playerRound(int[] cords) {
 		int row = cords[0];
 		int col = cords[1];
-		System.out.println(row +" " + col );
 		if (playersMove) {
-		Square enemySquare = this.enemyBoard.getOcean()[row][col];
+			Square enemySquare = this.enemyBoard.getOcean()[row][col];
 			if (enemySquare.status == SquareStatus.SHIP) {
 				enemySquare.status = SquareStatus.HIT;
-			} else if (enemySquare.status == SquareStatus.EMPTY){
+			} else if (enemySquare.status == SquareStatus.EMPTY) {
 				enemySquare.status = SquareStatus.MISSED;
 				playersMove = false;
-				System.out.println("Players 2 round");
+				System.out.println("enemy round");
 			}
-			enemy.checkIfShipIsDestroyed();
+			if (enemy.checkIfShipIsDestroyed())
+				enemy.removeOneLive();
+				if (playerIsAlive(enemy.getPlayerLives())) return "enemy";
 		} else {
 			Square playerSquare = this.board.getOcean()[row][col];
 			if (playerSquare.status == SquareStatus.SHIP) {
 				playerSquare.status = SquareStatus.HIT;
-			} else if (playerSquare.status == SquareStatus.EMPTY){
+			} else if (playerSquare.status == SquareStatus.EMPTY) {
 				playerSquare.status = SquareStatus.MISSED;
 				playersMove = true;
-				System.out.println("Player 1 round");
+				System.out.println("Player round");
 			}
-			player.checkIfShipIsDestroyed();
+			if (player.checkIfShipIsDestroyed())
+				player.removeOneLive();
+			if (playerIsAlive(player.getPlayerLives())) return "player";
 		}
-
+		return null;
 	}
 
-//	public gameIsRuning(){
+	public boolean playerIsAlive(int lives) {
+		return (lives == 0) ? true : false;
+	}
+
+
+	/**
+	 * String winner = null;
+	 * private setWinner(String winner);
+	 * winner = winner
+	 */
+
+
+//	public gameIsRunning(){
 //
 //	}
 

@@ -1,11 +1,11 @@
 package com.codecool.battleship.util;
 
 public enum SquareStatus {
-	EMPTY("~"),
-	SHIP("s"),
-	HIT("h"),
-	MISSED("m"),
-	DESTROYED("d");
+	EMPTY("\u2652"),
+	SHIP("\u26F5"),
+	HIT("\u274E"),
+	MISSED("\u2753"),
+	DESTROYED("\u274C");
 
 	String value;
 

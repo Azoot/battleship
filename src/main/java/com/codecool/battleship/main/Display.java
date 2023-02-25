@@ -26,7 +26,7 @@ public class Display {
 
 	public void printBoard(Square[][] board, Square[][] enemyBoard) {
 		printColumnNumbers(board.length);
-		System.out.print(" ");
+		System.out.print("\t");
 		printColumnNumbers(enemyBoard.length);
 		System.out.println();
 		for (int row = 0; row < board.length; row++) {
@@ -59,7 +59,8 @@ public class Display {
 	private void printColumnNumbers(int boardLength) {
 		System.out.print(" ");
 		for (int i = 0; i < boardLength; i++) {
-			System.out.print(" " + (i + 1));
+			System.out.print("  " + (i + 1));
+			System.out.print("");
 		}
 	}
 
@@ -70,6 +71,10 @@ public class Display {
 	public void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
+	}
+
+	public void printWinningMessage(String player){
+		System.out.println("Wygrał " + player);
 	}
 
 

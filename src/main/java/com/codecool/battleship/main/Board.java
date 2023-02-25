@@ -4,7 +4,7 @@ import com.codecool.battleship.util.BoardFactory;
 import com.codecool.battleship.util.SquareStatus;
 
 public class Board {
-	Square[][] ocean = new Square[0][]; // TODO Square [][] ??
+	Square[][] ocean = new Square[0][];
 
 	private int boardSize;
 	private BoardFactory boardFactory = new BoardFactory();

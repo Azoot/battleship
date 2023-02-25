@@ -32,13 +32,21 @@ public class Battleship {
 						try {
 						display.printBoard(game.getBoard().getOcean(), game.getEnemyBoard().getOcean());
 							int[] cords = input.getPlayerInput();
-							game.playerRound(cords);
+							String winner = game.playerRound(cords);
+							if (winner == "enemy"){
+								display.printWinningMessage("Player 1");
+								break;
+							} else if (winner == "player") {
+								display.printWinningMessage("Player 2");
+								break;
+							}
+
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
 						}
 
 					}
-//					break;
+					break;
 				case HIGH_SCORE:
 					System.out.println("There is no high score dummy");
 					break;
