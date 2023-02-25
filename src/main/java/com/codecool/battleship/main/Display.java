@@ -1,6 +1,8 @@
 package com.codecool.battleship.main;
 
 import com.codecool.battleship.util.MenuItem;
+import com.codecool.battleship.util.SquareStatus;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class Display {
 	public void printBoard(Square[][] board) {
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board.length; col++) {
-				System.out.print(board[row][col] + " ");
+				System.out.print(StringUtils.center(String.valueOf(board[row][col]), 4));
 			}
 			System.out.println();
 		}
@@ -33,12 +35,17 @@ public class Display {
 
 			System.out.print(this.printRowLetters(row) + " ");
 			for (int col = 0; col < board.length; col++) {
-				System.out.print(board[row][col] + " ");
+
+				System.out.print(StringUtils.center(String.valueOf(board[row][col]), 3));
 			}
 			System.out.print("\t" + (this.printRowLetters(row)) + " ");
 
 			for (int col = 0; col < board.length; col++) {
-				System.out.print(enemyBoard[row][col] + " ");
+				if (enemyBoard[row][col].status == SquareStatus.SHIP){
+					System.out.print(StringUtils.center(String.valueOf(SquareStatus.EMPTY.GetCharacter()), 3));
+				} else {
+					System.out.print(StringUtils.center(String.valueOf(enemyBoard[row][col]), 3));
+				}
 			}
 			System.out.println();
 		}
@@ -57,9 +64,9 @@ public class Display {
 	}
 
 	private void printColumnNumbers(int boardLength) {
-		System.out.print(" ");
+		System.out.print("  ");
 		for (int i = 0; i < boardLength; i++) {
-			System.out.print("  " + (i + 1));
+			System.out.print(StringUtils.center(String.valueOf((i + 1)), 3));
 			System.out.print("");
 		}
 	}

@@ -8,8 +8,11 @@ public class Game {
 	Player player = new Player();
 	Player enemy = new Player();
 
-	Boolean playersMove = true;
+	private Boolean playersMove = true;
 
+	public Boolean getPlayersMove() {
+		return playersMove;
+	}
 
 	public Board getBoard() {
 		return board;
