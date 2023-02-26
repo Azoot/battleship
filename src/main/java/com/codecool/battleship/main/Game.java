@@ -10,24 +10,27 @@ public class Game {
 
 	private Boolean playersMove = true;
 
-	public Boolean getPlayersMove() {
-		return playersMove;
-	}
 
 	public Board getBoard() {
 		return board;
 	}
-
 	public Board getEnemyBoard() {
 		return enemyBoard;
+	}
+	public Boolean getPlayersMove() {
+		return playersMove;
+	}
+
+	public void createEmptyBoards() {
+		board.createGameBoard();
+		enemyBoard.createGameBoard();
 	}
 
 	/**
 	 * Function Starting Game Rounds and logic
 	 */
 	public void start() {
-		board.createGameBoard();
-		enemyBoard.createGameBoard();
+		createEmptyBoards();
 		for (Ship ship : player.getShips()) {
 			board.placeShipOnBoard(ship);
 		}
@@ -35,9 +38,14 @@ public class Game {
 			enemyBoard.placeShipOnBoard(ship);
 		}
 		draw();
-
-
 	}
+	public void startGameManualPlacement(int[] cords, int i) {
+		if (i < player.getShips().size())
+			board.placeShipManuallyOnBoard((Ship) player.getShips().get(i), cords);
+		draw();
+	}
+
+
 
 	private void draw() {
 		for (Ship ship : player.getShips()) {
@@ -62,7 +70,7 @@ public class Game {
 			}
 			if (enemy.checkIfShipIsDestroyed())
 				enemy.removeOneLive();
-				if (playerIsAlive(enemy.getPlayerLives())) return "enemy";
+			if (playerIsAlive(enemy.getPlayerLives())) return "enemy";
 		} else {
 			Square playerSquare = this.board.getOcean()[row][col];
 			if (playerSquare.status == SquareStatus.SHIP) {
@@ -80,7 +88,7 @@ public class Game {
 	}
 
 	public boolean playerIsAlive(int lives) {
-		return (lives == 0) ? true : false;
+		return lives == 0;
 	}
 
 

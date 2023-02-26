@@ -1,6 +1,8 @@
 package com.codecool.battleship.main;
 
+import com.codecool.battleship.util.GameModes;
 import com.codecool.battleship.util.MenuItem;
+import com.codecool.battleship.util.PlacementModes;
 import com.codecool.battleship.util.SquareStatus;
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,6 +13,8 @@ public class Display {
 	 * Creates list type <MenuItem> called menuItems then states the content of the list itself
 	 */
 	private List<MenuItem> menuItems = List.of(MenuItem.START, MenuItem.HIGH_SCORE, MenuItem.EXIT);
+	private List<GameModes> gameModes = List.of(GameModes.SOLO, GameModes.TWO_PLAYERS);
+	private List<PlacementModes> placementModes = List.of(PlacementModes.MANUAL, PlacementModes.RANDOM);
 
 	/**
 	 * Print board
@@ -41,7 +45,7 @@ public class Display {
 			System.out.print("\t" + (this.printRowLetters(row)) + " ");
 
 			for (int col = 0; col < board.length; col++) {
-				if (enemyBoard[row][col].status == SquareStatus.SHIP){
+				if (enemyBoard[row][col].status == SquareStatus.SHIP) {
 					System.out.print(StringUtils.center(String.valueOf(SquareStatus.EMPTY.GetCharacter()), 3));
 				} else {
 					System.out.print(StringUtils.center(String.valueOf(enemyBoard[row][col]), 3));
@@ -57,6 +61,20 @@ public class Display {
 			System.out.println(i + 1 + ". " + menuItems.get(i));
 		}
 
+	}
+
+	public void displayGameModes() {
+		System.out.println("Game Modes: ");
+		for (int i = 0; i < gameModes.size(); i++) {
+			System.out.println(i + 1 + ". " + gameModes.get(i));
+		}
+	}
+
+	public void displayPlacementModes() {
+		System.out.println("Placement Methods: ");
+		for (int i = 0; i < placementModes.size(); i++) {
+			System.out.println(i + 1 + ". " + placementModes.get(i));
+		}
 	}
 
 	private char printRowLetters(int asciiVal) {
@@ -80,9 +98,17 @@ public class Display {
 		System.out.flush();
 	}
 
-	public void printWinningMessage(String player){
+	public void printWinningMessage(String player) {
 		System.out.println("Wygrał " + player);
 	}
 
+	public void printMenuList(String menuValue) {
+		if (menuValue == "Menu") displayMenu();
+		else if (menuValue == "Game") displayGameModes();
+		else if (menuValue == "Placement") displayPlacementModes();
+	}
 
+	public void printMessage(String message) {
+		System.out.println(message);
+	}
 }

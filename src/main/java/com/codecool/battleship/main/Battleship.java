@@ -1,7 +1,11 @@
 package com.codecool.battleship.main;
 
 
+import com.codecool.battleship.util.GameModes;
 import com.codecool.battleship.util.MenuItem;
+import com.codecool.battleship.util.PlacementModes;
+
+import static com.codecool.battleship.util.PlacementModes.MANUAL;
 
 public class Battleship {
 	Input input = new Input();
@@ -18,15 +22,36 @@ public class Battleship {
 			this.display.displayMenu();
 			String playerInput = input.getMenuInput();
 			MenuItem menuItem = MenuItem.valueOfNumber(Integer.parseInt(playerInput));
-//			MenuItem menuItem = MenuItem.START; // In case testing whole app comment this line(21) and uncomment line (19-20)
+//			MenuItem menuItem = MenuItem.START; // In case testing whole app switch comment on  this line(21) and line (19-20)
 
 			if (menuItem == null) {
-				System.out.println("Input number from 1 -2 ");
+				display.printMenuList("Menu");
 				continue;
 			}
 			switch (menuItem) {
 				case START:
-					System.out.println("Game started");
+					display.printMessage("Game initialization started.");
+					display.printMenuList("Game");
+					playerInput = input.getMenuInput();
+					GameModes gameModes = GameModes.valueOfNumber(Integer.parseInt(playerInput));
+					display.printMenuList("Placement");
+					playerInput = input.getMenuInput();
+					System.out.println(playerInput);
+					PlacementModes placementMethod = PlacementModes.valueOfNumber(Integer.parseInt(playerInput));
+					if (placementMethod == MANUAL) {
+						game.createEmptyBoards();
+						try {
+							int i = 0;
+							while (true) {
+								display.printBoard(game.getBoard().getOcean(), game.getEnemyBoard().getOcean());
+								int[] cords = input.getPlayerInput();
+								game.startGameManualPlacement(cords, i++);
+								display.printBoard(game.getEnemyBoard().getOcean(), game.getBoard().getOcean());
+							}
+						} catch (Exception e) {
+							System.out.println(e.getMessage());
+						}
+					}
 					game.start();
 					while (true) {
 						try {
@@ -51,10 +76,10 @@ public class Battleship {
 					}
 					break;
 				case HIGH_SCORE:
-					System.out.println("There is no high score dummy");
+					display.printMessage("There is no high score dummy");
 					break;
 				case EXIT:
-					System.out.println("Exiting game");
+					display.printMessage("Exiting game");
 					System.exit(0);
 				default:
 					System.out.println("1 - 2");

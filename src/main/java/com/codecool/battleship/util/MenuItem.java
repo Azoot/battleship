@@ -23,9 +23,9 @@ public enum MenuItem {
 			NUMBER.put(m.number, m);
 		}
 	}
-	private String value;
+	private final String value;
 
-	private int number;
+	private final int number;
 
 
 	MenuItem(int number, String value) {
