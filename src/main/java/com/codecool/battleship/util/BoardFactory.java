@@ -50,7 +50,7 @@ public class BoardFactory {
 		}
 	}
 
-
+	// TODO przypisuje randomowe pozycje statkom pomimo manualnego podania pozycji/ Memory leak przy statkach dluzszych niz 1
 	public List<List<Square>> manualPlacement(int[] cords, Square[][] gameBoard, int shipSize) {
 		List<List<Square>> listOfSquares = new ArrayList<>();
 		int row = cords[0];
@@ -75,17 +75,18 @@ public class BoardFactory {
 							throw new ArrayIndexOutOfBoundsException("");
 						}
 						squares.add(new Square(rowNumber, colNumber, SquareStatus.SHIP));
+//						System.out.println(squares);
 
 						if (squares.size() == shipSize & shipSize > 1) {
 							listOfSquares.add(squares);
-							System.out.println(listOfSquares);
+//							System.out.println(listOfSquares);
 						}
 						else if (shipSize == 1) {
 							squares.add(new Square(rowNumber, colNumber, SquareStatus.SHIP));
 							break;
 						}
 					}
-					System.out.println(shipSize);
+//					System.out.println(shipSize);
 					count++;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {

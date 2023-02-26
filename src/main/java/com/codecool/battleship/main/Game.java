@@ -14,9 +14,11 @@ public class Game {
 	public Board getBoard() {
 		return board;
 	}
+
 	public Board getEnemyBoard() {
 		return enemyBoard;
 	}
+
 	public Boolean getPlayersMove() {
 		return playersMove;
 	}
@@ -39,12 +41,14 @@ public class Game {
 		}
 		draw();
 	}
+
 	public void startGameManualPlacement(int[] cords, int i) {
+			System.out.println(cords[0] + " " + cords[1]);
 		if (i < player.getShips().size())
-			board.placeShipManuallyOnBoard((Ship) player.getShips().get(i), cords);
+		enemyBoard.placeShipManuallyOnBoard(player.getShips().get(i), cords);
+		enemyBoard.placeShipOnBoard(player.getShips().get(i));
 		draw();
 	}
-
 
 
 	private void draw() {

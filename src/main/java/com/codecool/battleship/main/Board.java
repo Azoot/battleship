@@ -40,7 +40,6 @@ public class Board {
 	public void placeShipManuallyOnBoard(Ship ship, int[] cords) {
 		boardFactory.manualPlacement(cords, ocean, ship.shipType.getSize());
 	}
-
 	public void drawShipOnBoard(Ship ship){
 		for (Square square : ship.getShipLocations()){
 			ocean[square.getPosY()][square.getPosX()] = square;
