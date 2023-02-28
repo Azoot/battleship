@@ -6,6 +6,7 @@ import com.codecool.battleship.util.MenuItem;
 import com.codecool.battleship.util.PlacementModes;
 
 import static com.codecool.battleship.util.PlacementModes.MANUAL;
+import static com.codecool.battleship.util.PlacementModes.RANDOM;
 
 public class Battleship {
 	Input input = new Input();
@@ -46,33 +47,33 @@ public class Battleship {
 								display.printBoard(game.getBoard().getOcean(), game.getEnemyBoard().getOcean());
 								int[] cords = input.getPlayerInput();
 								game.startGameManualPlacement(cords, i++);
-								display.printBoard(game.getEnemyBoard().getOcean(), game.getBoard().getOcean());
 							}
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
 						}
-					}
-					game.start();
-					while (true) {
-						try {
-							if (game.getPlayersMove())
-								display.printBoard(game.getBoard().getOcean(), game.getEnemyBoard().getOcean());
-							else
-								display.printBoard(game.getEnemyBoard().getOcean(), game.getBoard().getOcean());
-							int[] cords = input.getPlayerInput();
-							String winner = game.playerRound(cords);
-							if (winner == "enemy") {
-								display.printWinningMessage("Player 1");
-								break;
-							} else if (winner == "player") {
-								display.printWinningMessage("Player 2");
-								break;
+					} else if (placementMethod == RANDOM) {
+						game.start();
+						while (true) {
+							try {
+								if (game.getPlayersMove())
+									display.printBoard(game.getBoard().getOcean(), game.getEnemyBoard().getOcean());
+								else
+									display.printBoard(game.getEnemyBoard().getOcean(), game.getBoard().getOcean());
+								int[] cords = input.getPlayerInput();
+								String winner = game.playerRound(cords);
+								if (winner == "enemy") {
+									display.printWinningMessage("Player 1");
+									break;
+								} else if (winner == "player") {
+									display.printWinningMessage("Player 2");
+									break;
+								}
+
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
 							}
 
-						} catch (Exception e) {
-							System.out.println(e.getMessage());
 						}
-
 					}
 					break;
 				case HIGH_SCORE:

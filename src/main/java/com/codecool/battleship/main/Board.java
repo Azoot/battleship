@@ -8,7 +8,6 @@ public class Board {
 
 	private int boardSize;
 	private BoardFactory boardFactory = new BoardFactory();
-
 	public Board(int boardSize) {
 		this.boardSize = boardSize;
 	}
@@ -38,12 +37,14 @@ public class Board {
 	}
 
 	public void placeShipManuallyOnBoard(Ship ship, int[] cords) {
-		boardFactory.manualPlacement(cords, ocean, ship.shipType.getSize());
-	}
-	public void drawShipOnBoard(Ship ship){
-		for (Square square : ship.getShipLocations()){
-			ocean[square.getPosY()][square.getPosX()] = square;
+		System.out.println(boardFactory.manualPlacement(cords, ocean, ship.shipType.getSize()));
+		ship.setSquares(boardFactory.manualPlacement(cords, ocean, ship.shipType.getSize()).get(0));
+		drawShipOnBoard(ship);
+		}
 
+	public void drawShipOnBoard(Ship ship) {
+		for (Square square : ship.getShipLocations()) {
+			ocean[square.getPosY()][square.getPosX()] = square;
 		}
 	}
 

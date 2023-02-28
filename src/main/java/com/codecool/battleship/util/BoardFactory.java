@@ -50,7 +50,6 @@ public class BoardFactory {
 		}
 	}
 
-	// TODO przypisuje randomowe pozycje statkom pomimo manualnego podania pozycji/ Memory leak przy statkach dluzszych niz 1
 	public List<List<Square>> manualPlacement(int[] cords, Square[][] gameBoard, int shipSize) {
 		List<List<Square>> listOfSquares = new ArrayList<>();
 		int row = cords[0];
@@ -77,22 +76,23 @@ public class BoardFactory {
 						squares.add(new Square(rowNumber, colNumber, SquareStatus.SHIP));
 //						System.out.println(squares);
 
-						if (squares.size() == shipSize & shipSize > 1) {
+						if (squares.size() == shipSize) {
 							listOfSquares.add(squares);
-//							System.out.println(listOfSquares);
-						}
-						else if (shipSize == 1) {
-							squares.add(new Square(rowNumber, colNumber, SquareStatus.SHIP));
 							break;
+						}
+						// TODO find a way to return only possible directions.
+						//  ATM it returns sets of directions either way, not necessarily all four.
+						//  Just doubled the possible directions
+						if (listOfSquares.size() == shipSize) {
+							return listOfSquares;
 						}
 					}
 //					System.out.println(shipSize);
 					count++;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
-				squares.clear();
 			}
-			if (shipSize == 1) break;
+			squares.clear();
 		}
 
 		return listOfSquares;
