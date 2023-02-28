@@ -46,7 +46,6 @@ public class Game {
 			System.out.println(cords[0] + " " + cords[1]);
 		if (i < player.getShips().size())
 		enemyBoard.placeShipManuallyOnBoard(player.getShips().get(i), cords);
-		enemyBoard.placeShipOnBoard(player.getShips().get(i));
 		draw();
 	}
 
